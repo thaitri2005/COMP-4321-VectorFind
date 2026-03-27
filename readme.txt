@@ -119,7 +119,40 @@ Bash:
    grep -c "^-\{5,\}$" "spider result.txt"
 
 ========================================
-7) Notes
+7) Testing & Verification
+========================================
+After running spider and exporter, verify the output:
+
+Step A: Check database files exist
+
+   Test-Path "data/phase1.db.db"  (should return True)
+   Test-Path "data/phase1.db.lg"  (should return True)
+
+Step B: Verify output file format
+
+   Open spider result.txt and check:
+   - Each record has: title, URL, date+size, keywords, child links
+   - Separated by line of dashes (---)
+   - Up to 10 keywords with frequencies
+   - Up to 10 child links
+
+Step C: Count pages
+
+   PowerShell:
+   (Select-String -Path "spider result.txt" -Pattern "^-+$" | Measure-Object).Count
+
+   Expected: 30
+
+Step D: Re-run exporter to verify no errors
+
+   mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter
+
+   Should see:
+   Written spider result: ...
+   BUILD SUCCESS
+
+========================================
+8) Notes
 ========================================
 1. This guide is environment-neutral and does not use any user-specific machine paths.
 2. If the course stop-word dictionary is provided, replace src/main/resources/stopwords.txt.

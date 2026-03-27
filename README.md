@@ -170,6 +170,71 @@ grep -c "^-\{5,\}$" "spider result.txt"
 
 For a 30-page crawl, expected count is 30.
 
+## Testing & Verification
+
+After running spider + exporter, verify the output:
+
+### 1. Check database files exist
+
+```powershell
+Test-Path "data/phase1.db.db"
+Test-Path "data/phase1.db.lg"
+```
+
+Both should return `True`.
+
+### 2. Verify output file format
+
+Open `spider result.txt` and check the format:
+
+```text
+Page Title Here
+https://example.com/page1
+Last-Modified, 1024
+keyword1 5; keyword2 3; keyword3 2
+https://example.com/child1
+https://example.com/child2
+--------rest of separators--------
+Next Page Title
+...
+```
+
+Each record should have:
+- Page title
+- URL
+- Last-Modified date, size
+- Up to 10 keywords with frequencies (space-separated)
+- Up to 10 child links
+- Line of dashes as separator
+
+### 3. Count pages in output
+
+PowerShell:
+
+```powershell
+(Select-String -Path "spider result.txt" -Pattern "^-+$" | Measure-Object).Count
+```
+
+Expected: `30`
+
+Bash:
+
+```bash
+grep -c "^-\{5,\}$" "spider result.txt"
+```
+
+### 4. Validate no errors
+
+Check that spider completed without errors:
+
+```powershell
+# Re-run exporter and look for this in output
+mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter
+# Should show:
+# Written spider result: ...
+# BUILD SUCCESS
+```
+
 ## Notes
 
 - This README is environment-neutral and avoids user-specific local paths.
