@@ -8,83 +8,98 @@ Build and Run Guide
 2. Maven 3.8 or above
 3. Internet access to crawl test pages
 
+Optional checks:
+   java -version
+   mvn -version
+
 ========================================
-2) Project Files
+2) Where Each Part Is
 ========================================
+Spider (Crawler)
 - src/main/java/hk/ust/comp4321/SpiderMain.java
-  Spider + indexer entry point
+  Main entry point for crawling + indexing pipeline
+- src/main/java/hk/ust/comp4321/crawler/BfsCrawler.java
+  Breadth-first traversal, fetch logic, and page update checks
 
+Indexer
+- src/main/java/hk/ust/comp4321/util/TextUtil.java
+  Tokenization
+- src/main/java/hk/ust/comp4321/util/StopWords.java
+  Stop-word loading/filtering
+- src/main/java/hk/ust/comp4321/util/PorterStemmer.java
+  Stemming
+
+Storage / Database
+- src/main/java/hk/ust/comp4321/storage/SearchDb.java
+  JDBM mappings, forward index, inverted indexes, and link graph
+- db_schema_design.txt
+  Schema design document
+
+Test Program (Required Output)
 - src/main/java/hk/ust/comp4321/SpiderResultExporter.java
-  Test program to generate spider result.txt
+  Reads DB and generates spider result.txt
 
+Other Required Files
 - src/main/resources/stopwords.txt
   Stop-word dictionary (replaceable)
-
-- db_schema_design.txt
-  JDBM schema documentation
+- data/
+  Indexed database files
 
 ========================================
-3) Quick Start (PowerShell)
+3) Build
 ========================================
-Run these commands from the project root.
-
-Step A: If mvn is not recognized in a new terminal, set paths first
-
-   $env:JAVA_HOME="C:\Users\Tri Thai\.jdk\jdk-17.0.16"
-   $env:PATH="C:\Users\Tri Thai\.jdk\jdk-17.0.16\bin;C:\Users\Tri Thai\.maven\maven-3.9.14\bin;" + $env:PATH
-
-Step B: Build
+Run from project root:
 
    mvn clean compile
 
-Step C: Crawl and index 30 pages
+========================================
+4) Run Spider + Indexer
+========================================
+Default run (uses built-in defaults):
 
-   mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain -Dexec.args="https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm 30 data/phase1.db src/main/resources/stopwords.txt"
+   mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain
 
-Step D: Generate output file
+Custom run:
 
-   mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter
+   mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain -Dexec.args="<seedUrl> <limit> <dbPathWithoutExtension> <stopWordsPath>"
 
-Step E: Validate result count (should be 30)
+Recommended Phase 1 command (30 pages):
 
+   mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain -Dexec.args="https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm 30 data/phase1.db src/main/resources/stopwords.txt"
+
+Backup seed URL if primary is unavailable:
+
+   https://comp4321-hkust.github.io/testpages/testpage.htm
+
+========================================
+5) Run Test Program (Exporter)
+========================================
+Default run:
+
+   mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter
+
+Custom output file:
+
+   mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter -Dexec.args="<dbPathWithoutExtension> <outputFile>"
+
+========================================
+6) Validate Output
+========================================
+Expected output files:
+1. data/<name>.db
+2. data/<name>.lg
+3. spider result.txt
+
+Separator count check (should be 30 for 30-page crawl):
+
+PowerShell:
    (Select-String -Path "spider result.txt" -Pattern "^-+$" | Measure-Object).Count
 
-========================================
-4) Command Reference
-========================================
-Run spider (default seed, default limit):
-
-   mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain
-
-Run spider (custom args):
-
-   mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain -Dexec.args="<seedUrl> <limit> <dbPath> <stopWordsPath>"
-
-Run exporter (default output name: spider result.txt):
-
-   mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter
-
-Run exporter (custom output):
-
-   mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter -Dexec.args="<dbPath> <outputFile>"
-
-========================================
-5) Fallback (Direct Java)
-========================================
-Use this only if Maven argument parsing still causes problems.
-
-   $cp="target/classes;C:\Users\Tri Thai\.m2\repository\jdbm\jdbm\1.0\jdbm-1.0.jar;C:\Users\Tri Thai\.m2\repository\org\jsoup\jsoup\1.18.3\jsoup-1.18.3.jar"
-   java -cp $cp hk.ust.comp4321.SpiderMain "https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm" 30 "data/phase1.db" "src/main/resources/stopwords.txt"
-   java -cp $cp hk.ust.comp4321.SpiderResultExporter "data/phase1.db" "spider result.txt"
-
-========================================
-6) Expected Output
-========================================
-1. JDBM database files under data/
-2. spider result.txt in project root
+Bash:
+   grep -c "^-\{5,\}$" "spider result.txt"
 
 ========================================
 7) Notes
 ========================================
-1. If the course-provided stop-word dictionary is available, replace src/main/resources/stopwords.txt.
-2. If the primary seed URL is unavailable, use the backup URL in the assignment description.
+1. This guide is environment-neutral and does not use any user-specific machine paths.
+2. If the course stop-word dictionary is provided, replace src/main/resources/stopwords.txt.

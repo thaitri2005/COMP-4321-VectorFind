@@ -1,97 +1,155 @@
 # COMP-4321-VectorFind
 
-VectorFind is a Java-based web crawling and indexing project for COMP4321.
+VectorFind is a COMP4321 Phase 1 implementation of a web spider with integrated indexing.
 
-This repository currently includes a complete **Phase 1** implementation:
+## What Is Implemented
+
 - Breadth-first spider (crawler)
-- Integrated indexer with stop-word filtering and Porter stemming
-- JDBM-backed storage for metadata, mappings, indexes, and link graph
-- Export tool that generates `spider result.txt`
+- Integrated indexer (tokenize, remove stop words, stem, index)
+- Persistent storage with JDBM (mappings, forward index, inverted indexes, link graph)
+- Export program that reads the database and generates spider result.txt
 
-## Features
+## Component Map
 
-- Crawls pages recursively from a seed URL using BFS
-- Handles cyclic links safely
-- Stores URL <=> page ID and word <=> word ID mappings
-- Builds separate body/title inverted indexes
-- Stores parent/child page relationships
-- Supports reruns with refresh logic based on page update checks
+### Spider (Crawler)
 
-## Tech Stack
+Responsible for URL traversal and fetching pages with BFS.
 
-- Java 17
-- Maven
-- Jsoup (HTML fetch + parsing)
-- JDBM (persistent key-value data structures)
+- Entry point: src/main/java/hk/ust/comp4321/SpiderMain.java
+- Core crawler: src/main/java/hk/ust/comp4321/crawler/BfsCrawler.java
+- URL normalization and fetch checks: src/main/java/hk/ust/comp4321/util/UrlUtil.java
 
-## Repository Layout
+### Indexer
+
+Runs inside the crawler pipeline after each page is fetched.
+
+- Tokenization: src/main/java/hk/ust/comp4321/util/TextUtil.java
+- Stop-word loading/filtering: src/main/java/hk/ust/comp4321/util/StopWords.java
+- Stemming: src/main/java/hk/ust/comp4321/util/PorterStemmer.java
+- Indexed data model: src/main/java/hk/ust/comp4321/model/
+
+### Storage Layer
+
+Stores all persistent structures required by Phase 1.
+
+- Database API: src/main/java/hk/ust/comp4321/storage/SearchDb.java
+- URL <=> pageId mappings
+- word <=> wordId mappings
+- forward index (per page term vector)
+- body/title inverted indexes
+- parent/child link graph
+
+### Result Exporter
+
+Reads the indexed database and writes spider result.txt in the expected plain-text format.
+
+- Export entry point: src/main/java/hk/ust/comp4321/SpiderResultExporter.java
+
+## Project Layout
 
 ```text
 src/main/java/hk/ust/comp4321/
-  SpiderMain.java                 # crawler + indexer entry point
-  SpiderResultExporter.java       # exports plain-text report
+  SpiderMain.java
+  SpiderResultExporter.java
+  config/CrawlConfig.java
   crawler/BfsCrawler.java
+  model/
   storage/SearchDb.java
-  model/*
-  util/*
+  util/
 src/main/resources/
   stopwords.txt
 data/
   phase1.db.db
   phase1.db.lg
 db_schema_design.txt
-readme.txt                        # course-oriented instructions
+readme.txt
 ```
 
-## Quick Start (PowerShell, Windows)
+## Prerequisites
 
-Run commands from the project root.
+- Java 17+
+- Maven 3.8+
+- Internet access for crawling test pages
 
-### 1) Configure Java + Maven (only if `mvn` is not recognized)
+Check your setup:
 
-```powershell
-$env:JAVA_HOME="C:\Users\Tri Thai\.jdk\jdk-17.0.16"
-$env:PATH="C:\Users\Tri Thai\.jdk\jdk-17.0.16\bin;C:\Users\Tri Thai\.maven\maven-3.9.14\bin;" + $env:PATH
+```bash
+java -version
+mvn -version
 ```
 
-### 2) Build
+## Build
 
-```powershell
+Run in project root:
+
+```bash
 mvn clean compile
 ```
 
-### 3) Run crawler + indexer (30 pages)
+## Run
 
-```powershell
-mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain -Dexec.args="https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm 30 data/phase1.db src/main/resources/stopwords.txt"
+### Run Spider + Indexer
+
+Default run (seed URL, limit 30, default db path, default stopwords path):
+
+```bash
+mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain
 ```
 
-### 4) Export report
+Custom run:
 
-```powershell
-mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter
+```bash
+mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain -Dexec.args="<seedUrl> <limit> <dbPathWithoutExtension> <stopWordsPath>"
 ```
 
-### 5) Verify output count
+Example:
+
+```bash
+mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain -Dexec.args="https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm 30 data/phase1.db src/main/resources/stopwords.txt"
+```
+
+### Run Exporter
+
+Default output (reads data/phase1.db and writes spider result.txt):
+
+```bash
+mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter
+```
+
+Custom output:
+
+```bash
+mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter -Dexec.args="<dbPathWithoutExtension> <outputFile>"
+```
+
+## Expected Outputs
+
+- data/<name>.db
+- data/<name>.lg
+- spider result.txt (or your custom output file)
+
+To check how many pages were exported (separator count):
+
+PowerShell:
 
 ```powershell
 (Select-String -Path "spider result.txt" -Pattern "^-+$" | Measure-Object).Count
 ```
 
-Expected result: `30`
+Bash:
 
-## Output Files
+```bash
+grep -c "^-\{5,\}$" "spider result.txt"
+```
 
-- `data/phase1.db.db`
-- `data/phase1.db.lg`
-- `spider result.txt`
+For a 30-page crawl, expected count is 30.
 
 ## Notes
 
-- `readme.txt` contains the course submission-oriented instructions.
-- If your environment parses Maven args differently in PowerShell, use `--%` as shown above.
-- The stop-word list can be replaced with the official course-provided dictionary.
+- This README is environment-neutral and avoids user-specific local paths.
+- You can replace src/main/resources/stopwords.txt with the official course dictionary if needed.
+- The detailed Phase 1 submission-style instructions are in readme.txt.
 
 ## License
 
-This repository is for educational use in COMP4321.
+Repository for educational use in COMP4321.
