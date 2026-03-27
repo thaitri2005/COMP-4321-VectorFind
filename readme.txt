@@ -59,13 +59,21 @@ Default run (uses built-in defaults):
 
    mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain
 
-Custom run:
-
-   mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain -Dexec.args="<seedUrl> <limit> <dbPathWithoutExtension> <stopWordsPath>"
-
 Recommended Phase 1 command (30 pages):
 
+PowerShell (use --% to prevent argument issues):
+
+   mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain -Dexec.args="https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm 30 data/phase1.db src/main/resources/stopwords.txt"
+
+Bash or cmd (no --% needed):
+
    mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderMain -Dexec.args="https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm 30 data/phase1.db src/main/resources/stopwords.txt"
+
+Expected output:
+
+   [INFO] --- exec:3.5.0:java (default-cli) @ phase1-search-engine ---
+   Crawling and indexing completed.
+   [INFO] BUILD SUCCESS
 
 Backup seed URL if primary is unavailable:
 
@@ -76,11 +84,23 @@ Backup seed URL if primary is unavailable:
 ========================================
 Default run:
 
+PowerShell:
+
+   mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter
+
+Bash or cmd:
+
    mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter
 
 Custom output file:
 
-   mvn exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter -Dexec.args="<dbPathWithoutExtension> <outputFile>"
+   mvn --% exec:java -Dexec.mainClass=hk.ust.comp4321.SpiderResultExporter -Dexec.args="<dbPathWithoutExtension> <outputFile>"
+
+Expected output:
+
+   [INFO] --- exec:3.5.0:java (default-cli) @ phase1-search-engine ---
+   Written spider result: F:\...\spider result.txt
+   [INFO] BUILD SUCCESS
 
 ========================================
 6) Validate Output
