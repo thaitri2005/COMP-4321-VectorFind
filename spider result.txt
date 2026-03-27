@@ -1,0 +1,199 @@
+Test page
+https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm
+Tue, 16 May 2023 05:03:16 GMT, 603
+new 2; page 2; test 2; admis 1; book 1; crawler 1; cse 1; depart 1; get 1; hkust 1
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+https://www.cse.ust.hk/~kwtleung/COMP4321/books.htm
+https://www.cse.ust.hk/~kwtleung/COMP4321/news.htm
+https://www.cse.ust.hk/~kwtleung/COMP4321/ust_cse.htm
+--------------------------------------------------------------------------------
+Movie Index Page
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+Tue, 16 May 2023 05:09:22 GMT, 19541
+2004 33; 2002 26; 2000 24; 2003 24; 2001 19; 1996 12; season 12; 1997 10; 1999 10; 2005 10
+https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/1.html
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/10.html
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/100.html
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/101.html
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/102.html
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/103.html
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/104.html
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/105.html
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/106.html
+--------------------------------------------------------------------------------
+books
+https://www.cse.ust.hk/~kwtleung/COMP4321/books.htm
+Tue, 16 May 2023 05:03:16 GMT, 601
+book 2; articl 1; autom 1; back 1; base 1; classif 1; data 1; gener 1; inform 1; keyword 1
+https://www.cse.ust.hk/~kwtleung/COMP4321/books/book3.htm
+https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm
+https://www.cse.ust.hk/~kwtleung/COMP4321/books/book1.htm
+https://www.cse.ust.hk/~kwtleung/COMP4321/books/book2.htm
+--------------------------------------------------------------------------------
+News
+https://www.cse.ust.hk/~kwtleung/COMP4321/news.htm
+Tue, 16 May 2023 05:03:16 GMT, 384
+new 4; back 1; bbc 1; cnn 1; main 1
+https://www.cse.ust.hk/~kwtleung/COMP4321/news/bbc.htm
+https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm
+https://www.cse.ust.hk/~kwtleung/COMP4321/news/cnn.htm
+--------------------------------------------------------------------------------
+CSE department of HKUST
+https://www.cse.ust.hk/~kwtleung/COMP4321/ust_cse.htm
+Tue, 16 May 2023 05:03:16 GMT, 392
+admis 2; cse 2; depart 2; hkust 2; back 1; main 1; pg 1; ug 1
+https://www.cse.ust.hk/~kwtleung/COMP4321/testpage.htm
+https://www.cse.ust.hk/~kwtleung/COMP4321/ust_cse/PG.htm
+https://www.cse.ust.hk/~kwtleung/COMP4321/ust_cse/UG.htm
+--------------------------------------------------------------------------------
+Dinosaur Planet (2003)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/1.html
+Tue, 16 May 2023 05:03:16 GMT, 3605
+dinosaur 28; search 15; titl 15; planet 12; movi 9; match 7; tv 7; result 6; episod 5; giant 5
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Fighter (2001)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/10.html
+Tue, 16 May 2023 05:03:16 GMT, 13199
+fighter 228; aka 91; titl 60; street 58; vg 40; english 34; ii 21; usa 21; search 16; movi 13
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Sam the Iron Bridge (1993)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/100.html
+Tue, 16 May 2023 05:03:16 GMT, 4110
+bridg 29; titl 16; search 15; iron 9; sam 9; aka 8; movi 8; match 7; result 6; tv 6
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Complete Shamanic Princess (1997)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/101.html
+Tue, 16 May 2023 05:03:16 GMT, 3166
+search 15; titl 14; complet 11; movi 8; princess 8; shaman 8; tv 8; aka 5; episod 5; imdb 5
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Notre Musique (2004)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/102.html
+Tue, 16 May 2023 05:03:16 GMT, 10796
+godard 19; movi 13; musiqu 12; notr 12; imdb 11; user 11; film 9; rate 8; hell 7; titl 7
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Sanford and Son: Season 6 (1976)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/103.html
+Tue, 16 May 2023 05:03:16 GMT, 3771
+sanford 16; search 15; titl 15; son 11; movi 8; aka 6; match 6; episod 5; imdb 5; result 5
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+The Great Race (1965)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/104.html
+Tue, 16 May 2023 05:03:16 GMT, 3678
+race 30; great 28; search 15; titl 13; tv 10; movi 8; match 7; aka 6; result 6; episod 5
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Obsessed (2002)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/105.html
+Tue, 16 May 2023 05:03:18 GMT, 3535
+obsess 28; titl 18; search 15; tv 10; aka 9; movi 8; result 8; match 6; episod 5; imdb 5
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Stevie Ray Vaughan and Double Trouble: Live at Montreux 1982 and 1985 (2004)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/106.html
+Tue, 16 May 2023 05:03:18 GMT, 5754
+imdb 11; stevi 10; user 10; concert 9; movi 9; rai 9; doubl 8; montreux 8; rate 8; troubl 8
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Magnolia: Bonus Material (2000)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/107.html
+Tue, 16 May 2023 05:03:18 GMT, 2513
+search 15; titl 9; movi 8; bonu 7; magnolia 7; materi 7; episod 5; imdb 5; match 5; mai 4
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Spartan (2004)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/108.html
+Tue, 16 May 2023 05:03:18 GMT, 7939
+imdb 11; user 11; movi 10; rate 9; 2004 7; film 7; amazon 6; kilmer 6; plot 6; spartan 6
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+No Way Back (1996)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/109.html
+Tue, 16 May 2023 05:03:18 GMT, 3379
+back 28; wai 25; search 15; titl 13; movi 8; match 7; result 6; tv 6; episod 5; imdb 5
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Full Frame: Documentary Shorts (1999)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/11.html
+Tue, 16 May 2023 05:03:18 GMT, 2700
+search 15; titl 11; short 9; movi 8; documentari 7; frame 7; full 7; episod 5; imdb 5; match 5
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Scandal (1989)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/110.html
+Tue, 16 May 2023 05:03:18 GMT, 7950
+imdb 11; user 11; movi 10; film 9; rate 9; 1989 7; us 7; amazon 6; plot 6; scandal 6
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Duplex (Widescreen) (2003)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/111.html
+Tue, 16 May 2023 05:03:18 GMT, 2478
+search 15; titl 9; movi 8; duplex 7; widescreen 7; episod 5; imdb 5; match 5; mai 4; tv 4
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+The Eye of Vichy (1993)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/112.html
+Tue, 16 May 2023 05:03:18 GMT, 7500
+archiv 58; footag 57; de 11; imdb 11; movi 11; user 10; rate 8; amazon 6; plot 6; vichi 6
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Bruce Lee: A Warrior's Journey (2000)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/113.html
+Tue, 16 May 2023 05:03:18 GMT, 6989
+footag 26; archiv 25; lee 13; bruce 12; imdb 11; movi 11; user 11; rate 8; journei 7; titl 7
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Dominion Tank Police Part 1 and 2 (1989)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/114.html
+Tue, 16 May 2023 05:03:18 GMT, 2792
+search 15; dominion 12; polic 10; tank 10; titl 10; movi 8; part 7; episod 5; imdb 5; match 5
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Lord Peter Wimsey: Murder Must Advertise (1973)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/115.html
+Tue, 16 May 2023 05:03:18 GMT, 8368
+advertis 13; imdb 11; movi 10; user 10; plot 9; wimsei 9; murder 8; must 8; peter 8; rate 8
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Bear Cub (2004)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/116.html
+Tue, 16 May 2023 05:03:18 GMT, 3868
+titl 22; bear 18; search 15; aka 11; cub 10; movi 8; match 7; english 6; episod 6; result 6
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Silk Stockings (1957)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/117.html
+Tue, 16 May 2023 05:03:18 GMT, 6617
+imdb 11; movi 11; user 10; rate 8; music 7; 1957 6; amazon 6; ninotchka 6; plot 6; silk 6
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Rambo: First Blood Part II (1985)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/118.html
+Tue, 16 May 2023 05:03:18 GMT, 8604
+rambo 17; film 12; first 12; movi 12; imdb 11; user 11; blood 10; rate 10; 1985 7; ii 7
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Travel the World by Train: Africa (1999)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/119.html
+Tue, 16 May 2023 05:03:18 GMT, 3953
+imdb 11; movi 10; user 9; rate 8; travel 8; 1999 7; train 7; world 7; amazon 6; africa 5
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+My Favorite Brunette (1947)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/12.html
+Tue, 16 May 2023 05:03:18 GMT, 6432
+movi 14; imdb 11; user 11; rate 10; brunett 7; favorit 7; 1947 6; amazon 6; hope 6; plot 6
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------
+Plain Dirty (2004)
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie/120.html
+Tue, 16 May 2023 05:03:18 GMT, 7025
+movi 12; imdb 11; user 11; edgar 9; love 9; rate 9; flower 7; amazon 6; titl 6; board 5
+https://www.cse.ust.hk/~kwtleung/COMP4321/Movie.htm
+--------------------------------------------------------------------------------

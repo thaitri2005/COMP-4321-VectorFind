@@ -1,0 +1,89 @@
+COMP4321 Phase 1 - JDBM Database Schema Design
+
+1) Overview
+This project uses JDBM tree maps as persistent key-value stores. The schema supports:
+- URL/page ID conversion
+- Word/word ID conversion
+- Forward index (per page term statistics)
+- Inverted indexes for body and title terms
+- Parent/child link graph
+- Page metadata for reporting
+
+2) Database Structures
+
+2.1 URL and Page Mapping
+- name: urlToPageId
+  key: String URL
+  value: Integer pageId
+  purpose: deduplicate pages and quickly find page IDs from URLs
+
+- name: pageIdToUrl
+  key: Integer pageId
+  value: String URL
+  purpose: reverse lookup for output and link traversal
+
+2.2 Page Metadata
+- name: pageTable
+  key: Integer pageId
+  value: PageInfo(pageId, url, title, lastModified, size)
+  purpose: output info for spider result.txt and update checks
+
+2.3 Word Mapping
+- name: wordToWordId
+  key: String stemmedWord
+  value: Integer wordId
+  purpose: dictionary table for terms
+
+- name: wordIdToWord
+  key: Integer wordId
+  value: String stemmedWord
+  purpose: reverse dictionary lookup
+
+2.4 Forward Index
+- name: forwardIndex
+  key: Integer pageId
+  value: Map<String, TermVectorEntry>
+  TermVectorEntry stores:
+  - bodyFrequency
+  - titleFrequency
+  - bodyPositions (for phrase support)
+  - titlePositions (for phrase support)
+  purpose: per-document term statistics and top keyword extraction
+
+2.5 Inverted Indexes
+- name: bodyInverted
+  key: String stemmedWord
+  value: Map<Integer pageId, Posting>
+  Posting stores frequency and positions in body
+
+- name: titleInverted
+  key: String stemmedWord
+  value: Map<Integer pageId, Posting>
+  Posting stores frequency and positions in title
+
+These two structures are separated to allow future ranking boost for title matches.
+
+2.6 Link Graph
+- name: parentToChildren
+  key: Integer parentPageId
+  value: Set<Integer childPageId>
+
+- name: childToParents
+  key: Integer childPageId
+  value: Set<Integer parentPageId>
+
+purpose: support both forward and reverse link traversal.
+
+3) Indexing Flow
+1. Normalize URL and assign page ID if needed.
+2. Save page metadata.
+3. Tokenize title/body, remove stop words, stem with Porter algorithm.
+4. Update forwardIndex and inverted indexes with frequency and positions.
+5. Extract links and update parentToChildren / childToParents.
+6. Commit changes to JDBM.
+
+4) Why This Design
+- Efficient lookup for crawler deduplication and recrawl checks.
+- Clean separation of body/title for future weighted ranking.
+- Position storage enables phrase search required in later phases.
+- Link graph supports required parent/child relation output.
